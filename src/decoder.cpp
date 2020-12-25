@@ -126,12 +126,15 @@ static const std::regex qmc_regex{"^.+\\.(qmc3|qmc0|qmcflac|qmcogg)$"};
 int main(int argc, char** argv) {
   if (argc > 1) {
     std::cerr
-        << "put decoder binary file in your qmc file directory, then run it."
+        << "Usage: run this binary at the qmc file directory,\n"
+        << "and then all the qmc files in this directory will be decoded."
         << std::endl;
     return -1;
   }
 
-  if ((fs::status(fs::path(".")).permissions() & fs::perms::owner_write) ==
+  char * pwd = getenv("PWD");
+
+  if ((fs::status(fs::path(pwd)).permissions() & fs::perms::owner_write) ==
       fs::perms::none) {
     std::cerr << "please check if you have the write permissions on this dir."
               << std::endl;
@@ -139,7 +142,7 @@ int main(int argc, char** argv) {
   }
   std::vector<std::string> qmc_paths;
 
-  for (auto& p : fs::recursive_directory_iterator(fs::path("."))) {
+  for (auto& p : fs::recursive_directory_iterator(fs::path(pwd))) {
     auto file_path = p.path().string();
 
     if ((fs::status(p).permissions() & fs::perms::owner_read) !=
