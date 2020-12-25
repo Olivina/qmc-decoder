@@ -18,7 +18,7 @@ binary executable file is released [release](https://github.com/Presburger/qmc-d
 * for linux
 
 ```shell
-git clone https://github.com/Presburger/qmc-decoder.git
+git clone https://github.com/Olivina/qmc-decoder.git
 cd qmc-decoder
 git submodule update --init
 mkdir build
@@ -31,7 +31,7 @@ make
 ```shell
 # install cmake 
 brew install cmake
-git clone https://github.com/Presburger/qmc-decoder.git
+git clone https://github.com/Olivina/qmc-decoder.git
 cd qmc-decoder
 git submodule update --init
 mkdir build && cd build
@@ -44,7 +44,7 @@ make
 ```bat
 # PowerShell, please install MSVC compiler and Git with environment variables configured
 # or in x86 or x64 Native Tools Command Prompt for VS 2019 
-git clone https://github.com/Presburger/qmc-decoder.git
+git clone https://github.com/Olivina/qmc-decoder.git
 cd qmc-decoder
 git submodule update --init
 mkdir build
@@ -55,7 +55,14 @@ nmake
 
 ## Convert
 
-Put the execuatable file in your qmc file directory, then run the execuatable file.
+The decoder can run in a separate directory, since the decoder will read the `PWD` environment variable and decode all the qmc files in the current directory.
+
+```shell
+cd <path-to-your-qmc-directory>
+decoder
+```
+
+
 
 For mac user, double-click the decoder.command file, before you need to put the `decoder.command` and `decoder` files in the qmc music file directory.
 
